@@ -1,0 +1,52 @@
+# Python/runtime
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+.env
+
+# Logs and local process output
+*.log
+*.out
+nohup.out
+
+# Large model/cache artifacts
+cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+*.npz
+
+# Generated model directories under runs: keep result metadata, ignore weights/tokenizers
+runs/*/saber_model/
+runs/*/*/saber_model/
+
+# Local databases and transient state
+*.db
+*.sqlite
+.DS_Store
+
+# Backup copies
+*.bak.*
+# Generated experiment outputs and local eval artifacts
+runs/
+results/
+queue/
+reports/generated/
+*.jsonl
+*.tmp
+*token*
+*secret*
+*credential*
+# Local environment/config secrets
+.env.*
+*.env
+# Local scratch/checkpoints/uploads
+/tmp/
+uploads/
+checkpoints/
+worktrees/

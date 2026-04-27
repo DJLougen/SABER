@@ -1,0 +1,100 @@
+{
+  "baseline_refusal": 1.0,
+  "baseline_ppl": 498.01,
+  "sweep_results": [
+    {
+      "global_top_k": 10,
+      "alpha_base": 0.7,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 513,
+      "n_layers": 10,
+      "total_dirs_ablated": 50
+    },
+    {
+      "global_top_k": 10,
+      "alpha_base": 0.85,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 450,
+      "n_layers": 10,
+      "total_dirs_ablated": 50
+    },
+    {
+      "global_top_k": 10,
+      "alpha_base": 1.0,
+      "post_refusal_rate": 0.05,
+      "post_perplexity": 410,
+      "n_layers": 10,
+      "total_dirs_ablated": 50
+    },
+    {
+      "global_top_k": 25,
+      "alpha_base": 0.7,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 819,
+      "n_layers": 20,
+      "total_dirs_ablated": 125
+    },
+    {
+      "global_top_k": 25,
+      "alpha_base": 0.85,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 1423,
+      "n_layers": 19,
+      "total_dirs_ablated": 125
+    },
+    {
+      "global_top_k": 25,
+      "alpha_base": 1.0,
+      "post_refusal_rate": 0.05,
+      "post_perplexity": 1662,
+      "n_layers": 20,
+      "total_dirs_ablated": 125
+    },
+    {
+      "global_top_k": 50,
+      "alpha_base": 0.7,
+      "post_refusal_rate": 0.05,
+      "post_perplexity": 1313,
+      "n_layers": 22,
+      "total_dirs_ablated": 250
+    },
+    {
+      "global_top_k": 50,
+      "alpha_base": 0.85,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 2683,
+      "n_layers": 21,
+      "total_dirs_ablated": 250
+    },
+    {
+      "global_top_k": 50,
+      "alpha_base": 1.0,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 7190,
+      "n_layers": 22,
+      "total_dirs_ablated": 250
+    },
+    {
+      "global_top_k": 75,
+      "alpha_base": 0.7,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 1949,
+      "n_layers": 22,
+      "total_dirs_ablated": 330
+    },
+    {
+      "global_top_k": 75,
+      "alpha_base": 0.85,
+      "post_refusal_rate": 0.0,
+      "post_perplexity": 2792,
+      "n_layers": 22,
+      "total_dirs_ablated": 330
+    }
+  ],
+  "best_config": {
+    "global_top_k": 10,
+    "alpha_base": 0.85,
+    "refusal": 0.0,
+    "ppl": 450.29798653510414
+  }
+}
