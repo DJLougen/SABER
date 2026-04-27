@@ -3,3 +3,9 @@ transformers>=4.40.0
 accelerate>=0.25.0
 safetensors
 numpy
+textual
+rich
+httpx
+fastapi
+uvicorn
+pydantic
