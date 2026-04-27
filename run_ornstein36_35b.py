@@ -42,7 +42,18 @@ SAVE_DIR = Path('/home/djl/ornstein3.6-saber/src')
 RESULTS_JSON = Path('/home/djl/ornstein3.6-saber/saber_result.json')
 
 POSIX_FADV_DONTNEED = 4
-_libc = ctypes.CDLL('libc.so.6', use_errno=True)
+_libc = None  # lazy-loaded; this script is Linux-only but should still import elsewhere
+
+
+def _get_libc():
+    global _libc
+    if _libc is None:
+        if not sys.platform.startswith('linux'):
+            raise RuntimeError(
+                'fadvise cache dropping is Linux-only; this script targets a Linux GPU host'
+            )
+        _libc = ctypes.CDLL('libc.so.6', use_errno=True)
+    return _libc
 
 
 def find_snapshot_dir():
@@ -58,7 +69,7 @@ def fadvise_dontneed_one(path):
     try:
         fd = os.open(real, os.O_RDONLY)
         try:
-            _libc.posix_fadvise(fd, ctypes.c_int64(0), ctypes.c_int64(0), POSIX_FADV_DONTNEED)
+            _get_libc().posix_fadvise(fd, ctypes.c_int64(0), ctypes.c_int64(0), POSIX_FADV_DONTNEED)
         finally:
             os.close(fd)
     except Exception as e:

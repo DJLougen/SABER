@@ -1,5 +1,9 @@
+import os
 import sys
-sys.path.insert(0, '/workspace/saber-lab')
+
+# Allow running from anywhere by adding the repo root (this file's directory) to sys.path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from saber_eval_refusal import RefusalEvaluator
 from config import HARMFUL_PROMPTS
 

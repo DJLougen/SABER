@@ -26,8 +26,7 @@ plt.rcParams.update({
     'grid.alpha': 0.5,
 })
 
-OUTPUT_DIR = Path('C:/Users/basbe/saber/model_card_plots')
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = Path(__file__).parent / 'model_card_plots'
 
 # ============================================================
 # Gemma 4 E2B Sweep Data
@@ -353,12 +352,13 @@ def plot_ablation_convergence():
     print(f"Saved: {OUTPUT_DIR / 'ablation_convergence.png'}")
 
 
-# Generate all plots
-print("Generating SABER model card plots...")
-plot_pipeline()
-plot_sweep_comparison()
-plot_refusal_comparison()
-plot_cross_scale()
-plot_entanglement_scatter()
-plot_ablation_convergence()
-print("\nAll plots generated!")
+if __name__ == "__main__":
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    print("Generating SABER model card plots...")
+    plot_pipeline()
+    plot_sweep_comparison()
+    plot_refusal_comparison()
+    plot_cross_scale()
+    plot_entanglement_scatter()
+    plot_ablation_convergence()
+    print("\nAll plots generated!")
