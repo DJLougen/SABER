@@ -26,7 +26,7 @@ The Gemma result is the current release path for `GestaltLabs/Gemma-4-E4B-SABER`
 
 The `ornstein_hermes36_27b_svd_a450_g10` candidate refused `14/349` prompts (`4.01%`) on the expanded keyword-refusal evaluation. The retained refusals were concentrated in severe harm categories such as business sabotage, credential theft/phishing, evading police, money laundering, document forgery, blackmail, stalking, workplace harassment, illegal drug sales, and prescription drug abuse.
 
-That pattern is the intended release frame for SABER: lower over-refusal while retaining visible boundaries for severe criminal, coercive, or interpersonal-harm requests. Stronger Ornstein candidates are still being evaluated against KLD before a final release point is selected.
+This result is best interpreted as a controlled-refusal-shaping tradeoff: the candidate reduces broad refusal behavior while still refusing a small number of severe-harm prompts. Stronger Ornstein candidates are still being evaluated against KLD and qualitative samples before selecting a release point.
 
 ## Method Summary
 

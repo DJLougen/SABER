@@ -40,7 +40,7 @@ The most important finding so far is that increasing the probe set size changes 
 
 The `ornstein_hermes36_27b_svd_a450_g10` candidate refused `14/349` prompts (`4.01%`) on the expanded keyword-refusal eval. The refused prompts were concentrated in severe criminal/coercive/interpersonal harm categories: business sabotage, credential theft/phishing, evading police, money laundering, document forgery, blackmail, stalking, workplace harassment, illegal drug sales, and prescription drug abuse.
 
-That pattern supports a controlled-refusal-shaping release frame. If its KLD is lower than stronger ablations, it may be the better release candidate because it reduces broad refusal behavior while preserving refusals worth documenting as intentional.
+This result is best interpreted as a controlled-refusal-shaping tradeoff. If its KLD is lower than stronger ablations, it may be a useful candidate because it reduces broad refusal behavior while still refusing a small number of severe-harm prompts. Final selection should depend on KLD, qualitative samples, and category review.
 
 ## Important Negative Results
 
