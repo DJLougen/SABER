@@ -134,4 +134,3 @@ python generate_saber_report.py
 
 ## Attribution / Prior Art
 
-Do not claim that SABER invented refusal ablation or abliteration. The intended contribution is the particular implementation and workflow: spectral/refusal-direction extraction, iterative ablation, and explicit Pareto selection over over-refusal reduction, retained severe-harm refusals, and behavioral drift. Related inspirations and prior art should be credited in the writeup and model cards, including Pliny-style abliteration, Heretic-style automated decensoring, and community findings around Gemma-family ablation improvements.
