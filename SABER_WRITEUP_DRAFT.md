@@ -8,7 +8,7 @@ I did not invent refusal ablation. SABER is explicitly inspired by prior refusal
 
 The specific idea I am exploring is that refusal ablation should not be treated as a single binary operation: find a direction, remove it. Instead, I treat it as a constrained editing problem:
 
-> Select many candidate refusal directions, rank them by how well they separate refusal behavior, estimate how entangled they are with ordinary capability behavior, and ablate them with different strengths depending on that tradeoff. The target is not zero refusal at any cost; the target is a useful refusal/KLD frontier with retained refusals documented by category.
+> Select many candidate refusal directions, rank them by how well they separate refusal behavior, estimate how entangled they are with ordinary capability behavior, and ablate them with different strengths depending on that tradeoff. The target is a useful refusal/KLD frontier with retained refusals documented by category.
 
 ## One-Sentence Method
 
@@ -16,7 +16,7 @@ SABER combines separability-ranked multi-direction refusal subspaces with capabi
 
 ## What Is New Here
 
-The contribution is not "refusal can be ablated." The contribution is the combination:
+The contribution is the combination of:
 
 1. Multi-direction refusal subspaces from each candidate layer.
 2. FDR / separability-based ranking of layers and directions.
@@ -34,14 +34,13 @@ The current completed Gemma target is `google/gemma-4-E4B-it`; Ornstein-Hermes-3
 | aggressive | `gemma4_e4b_auto_svd_nh60_a825_g14` | 0.00% | 0.4327 | complete refusal suppression, more drift |
 | balanced | `gemma4_e4b_auto_svd_a825_g14` | 2.04% | 0.3164 | low refusal, lower drift |
 
-The most important finding so far is that increasing the probe set size changes FDR-selected layers. With 49 probes instead of 30, the selected layer pattern shifts toward mid/late layers and achieves 0% refusal, but KLD rises. That suggests probe count is not just a sampling detail; it is a real hyperparameter that changes the refusal/capability tradeoff.
-
+The most important finding so far is that increasing the probe set size changes FDR-selected layers. With 49 probes instead of 30, the selected layer pattern shifts toward mid/late layers and achieves 0% refusal, but KLD rises. That suggests probe count is a meaningful hyperparameter that changes the refusal/capability tradeoff.
 
 ### Ornstein release-frame note
 
 The `ornstein_hermes36_27b_svd_a450_g10` candidate refused `14/349` prompts (`4.01%`) on the expanded keyword-refusal eval. The refused prompts were concentrated in severe criminal/coercive/interpersonal harm categories: business sabotage, credential theft/phishing, evading police, money laundering, document forgery, blackmail, stalking, workplace harassment, illegal drug sales, and prescription drug abuse.
 
-That pattern should be described as controlled refusal shaping rather than a failure to reach zero refusal. If its KLD is lower than stronger ablations, it may be the better release candidate because it reduces broad refusal behavior while preserving refusals we are comfortable advertising as intentional.
+That pattern supports a controlled-refusal-shaping release frame. If its KLD is lower than stronger ablations, it may be the better release candidate because it reduces broad refusal behavior while preserving refusals worth documenting as intentional.
 
 ## Important Negative Results
 
@@ -52,37 +51,30 @@ That pattern should be described as controlled refusal shaping rather than a fai
 - Whitened SVD preserved behavior only because it barely removed refusal; refusal stayed very high.
 - `max_iterations=3` left too much refusal; `max_iterations=6` over-optimized the residual proxy and worsened KLD. On this model, 4 iterations is the useful point.
 
-## Prior-Art Boundary
+## Relationship to Prior Work
 
-SABER must be written as a method in the abliteration lineage, not as the origin of refusal ablation.
+SABER should be presented as a method in the abliteration lineage. Relevant prior work and inspirations include:
 
-Credit chain to include:
-
-- Arditi et al.: refusal direction mechanism.
-- Maxime Labonne / FailSpy-style community abliteration: practical refusal ablation recipes and releases.
-- Jim Lai: projected, norm-preserving, and biprojected ablation refinements.
-- Pliny / OBLITERATUS: broad community experimentation and tooling around abliteration.
+- Arditi et al. (2024), `Refusal in Language Models Is Mediated by a Single Direction`: refusal-direction mechanism and weight-space intervention.
+- Maxime Labonne and FailSpy-style community abliteration recipes: practical open implementations and model-release workflows.
+- Jim Lai (`grimjim`): projected abliteration, norm-preserving biprojected ablation, and related geometric refinements.
+- Pliny / OBLITERATUS: broad community experimentation and tooling around abliteration workflows.
 - Heretic: automatic directional ablation with refusal/KL optimization.
-- Jiunsong / SuperGemma: important Gemma-family evidence that abliteration can improve practical model behavior, not merely remove refusals.
-- Surgical Refusal Ablation / spectral-cleaning-style work: close conceptual neighbor around entanglement and capability preservation.
+- Jiunsong / SuperGemma: Gemma-family evidence that ablation can improve practical model behavior and release quality, not merely remove refusals.
+- Zhao et al. (2025), `LLMs Encode Harmfulness and Refusal Separately`: useful framing for separating harmfulness judgment from refusal behavior.
 
-## Claim Boundary
+## Scope of Claims
 
-Safe claim:
+Current claim:
 
 > Building on prior refusal-direction and abliteration work, SABER studies refusal ablation as a constrained multi-objective editing problem. It ranks multi-direction refusal candidates by separability and capability entanglement, then applies differential ablation strengths to map and improve the refusal/KLD frontier.
 
-Claims to avoid:
-
-- Do not claim to invent refusal ablation.
-- Do not claim to invent automatic refusal/KLD optimization broadly.
-- Do not claim capability entanglement is a new concept in all forms.
-- Do not frame this as a product for removing safeguards; frame it as interpretability and representation-editing research with clear dual-use implications.
+This framing treats SABER as a custom controlled-refusal-shaping workflow with clear related-work lineage and dual-use implications.
 
 ## Write-Up Freeze Criteria
 
 1. Freeze the balanced and aggressive Gemma-4-E4B points.
-2. Finish the current two nh60 follow-up tests.
+2. Finish the current nh60 follow-up tests.
 3. Generate a clean frontier table and plot from artifacts.
 4. Add direct related-work comparisons and credit language.
 5. Produce a small browser report for inspection and sharing.

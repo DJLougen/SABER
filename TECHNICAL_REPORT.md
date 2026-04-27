@@ -1,6 +1,6 @@
 # Status Note
 
-This is an early technical draft. The current public framing is controlled refusal shaping: SABER aims to reduce overbroad refusal behavior while preserving refusals on severe criminal, coercive, and interpersonal-harm requests. Do not read this draft as a final claim that SABER invented refusal ablation or that every refusal should be removed.
+This is an early technical draft. The current public framing is controlled refusal shaping: SABER aims to reduce overbroad refusal behavior while preserving refusals on severe criminal, coercive, and interpersonal-harm requests. SABER is positioned as a custom method in the refusal-direction and abliteration lineage, with attribution to prior work and candidate selection based on the refusal/KLD frontier.
 
 ---
 
