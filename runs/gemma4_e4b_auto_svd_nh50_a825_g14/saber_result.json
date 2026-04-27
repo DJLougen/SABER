@@ -1,0 +1,1327 @@
+{
+  "model": "google/gemma-4-E4B-it",
+  "config": {
+    "extraction_method": "svd",
+    "n_directions": 4,
+    "layer_selection_strategy": "top_k",
+    "layer_top_k": 12,
+    "global_top_k": 14,
+    "alpha_base": 0.825,
+    "alpha_entangled": 0.03,
+    "max_iterations": 4,
+    "convergence_threshold": 0.01,
+    "entanglement_threshold": 0.55
+  },
+  "selected_layers": [
+    16,
+    20,
+    22,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "total_directions_ablated": 56,
+  "iterations": 4,
+  "final_residual_refusal": 7.381371946552603,
+  "final_capability_preservation": 1.0,
+  "elapsed_seconds": 6.079636573791504,
+  "layer_profiles": {
+    "0": {
+      "fdr": 0.062117600021061904,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.07893445687989659,
+          "entanglement": 0.22321949899196625,
+          "purity": 0.7767805010080338,
+          "variance_explained": 0.9998193979263306
+        },
+        {
+          "separability": 0.22090883611235268,
+          "entanglement": 0.9514871835708618,
+          "purity": 0.048512816429138184,
+          "variance_explained": 0.0001216352466144599
+        },
+        {
+          "separability": 0.008975842243754114,
+          "entanglement": 0.7359782457351685,
+          "purity": 0.26402175426483154,
+          "variance_explained": 1.205423723149579e-05
+        },
+        {
+          "separability": 0.16722939316303154,
+          "entanglement": 0.41988423466682434,
+          "purity": 0.5801157653331757,
+          "variance_explained": 7.146949428715743e-06
+        }
+      ]
+    },
+    "1": {
+      "fdr": 0.35239540387249413,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.13440929860097037,
+          "entanglement": 0.10473260283470154,
+          "purity": 0.8952673971652985,
+          "variance_explained": 0.9995202422142029
+        },
+        {
+          "separability": 2.65463429983363,
+          "entanglement": 0.49394741654396057,
+          "purity": 0.5060525834560394,
+          "variance_explained": 0.00010988980648107827
+        },
+        {
+          "separability": 0.007581471371549902,
+          "entanglement": 0.4866245687007904,
+          "purity": 0.5133754312992096,
+          "variance_explained": 9.729491284815595e-05
+        },
+        {
+          "separability": 0.09217322770518149,
+          "entanglement": 0.12743894755840302,
+          "purity": 0.872561052441597,
+          "variance_explained": 4.39448376710061e-05
+        }
+      ]
+    },
+    "2": {
+      "fdr": 0.8513714031593655,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.1036254592595894,
+          "entanglement": 0.10173191130161285,
+          "purity": 0.8982680886983871,
+          "variance_explained": 0.9978151917457581
+        },
+        {
+          "separability": 2.0726060387515535,
+          "entanglement": 0.5017948746681213,
+          "purity": 0.49820512533187866,
+          "variance_explained": 0.0005231313989497721
+        },
+        {
+          "separability": 0.24997576792888984,
+          "entanglement": 0.7367578148841858,
+          "purity": 0.2632421851158142,
+          "variance_explained": 0.00035187997855246067
+        },
+        {
+          "separability": 0.0062192493694175855,
+          "entanglement": 0.4074523150920868,
+          "purity": 0.5925476849079132,
+          "variance_explained": 0.00015741479001007974
+        }
+      ]
+    },
+    "3": {
+      "fdr": 1.5558183290828822,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.07841606806931113,
+          "entanglement": 0.1158679872751236,
+          "purity": 0.8841320127248764,
+          "variance_explained": 0.9940499663352966
+        },
+        {
+          "separability": 0.7311960678678936,
+          "entanglement": 0.5201446413993835,
+          "purity": 0.47985535860061646,
+          "variance_explained": 0.0021998840384185314
+        },
+        {
+          "separability": 1.1392608515908687,
+          "entanglement": 0.6101495027542114,
+          "purity": 0.3898504972457886,
+          "variance_explained": 0.0009299691882915795
+        },
+        {
+          "separability": 0.011141127397502244,
+          "entanglement": 0.07555995881557465,
+          "purity": 0.9244400411844254,
+          "variance_explained": 0.0005075483932159841
+        }
+      ]
+    },
+    "4": {
+      "fdr": 1.5041124607526009,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.2770495831371503,
+          "entanglement": 0.07515406608581543,
+          "purity": 0.9248459339141846,
+          "variance_explained": 0.9938769936561584
+        },
+        {
+          "separability": 1.1320123264965407,
+          "entanglement": 0.5327895283699036,
+          "purity": 0.46721047163009644,
+          "variance_explained": 0.002058819169178605
+        },
+        {
+          "separability": 0.8858401120518549,
+          "entanglement": 0.5965434908866882,
+          "purity": 0.40345650911331177,
+          "variance_explained": 0.000806134135928005
+        },
+        {
+          "separability": 0.01755662116803117,
+          "entanglement": 0.15174511075019836,
+          "purity": 0.8482548892498016,
+          "variance_explained": 0.0004167516599409282
+        }
+      ]
+    },
+    "5": {
+      "fdr": 2.0137314212201116,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.5107515597390246,
+          "entanglement": 0.06802357733249664,
+          "purity": 0.9319764226675034,
+          "variance_explained": 0.9946492314338684
+        },
+        {
+          "separability": 2.09990080336823,
+          "entanglement": 0.3685014843940735,
+          "purity": 0.6314985156059265,
+          "variance_explained": 0.0018433406949043274
+        },
+        {
+          "separability": 0.6137154556530141,
+          "entanglement": 0.5036616325378418,
+          "purity": 0.4963383674621582,
+          "variance_explained": 0.0006232369341887534
+        },
+        {
+          "separability": 0.013153728853046935,
+          "entanglement": 0.356218159198761,
+          "purity": 0.643781840801239,
+          "variance_explained": 0.00044437628821469843
+        }
+      ]
+    },
+    "6": {
+      "fdr": 4.307684769127365,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.1463423074986996,
+          "entanglement": 0.0687899962067604,
+          "purity": 0.9312100037932396,
+          "variance_explained": 0.9793482422828674
+        },
+        {
+          "separability": 1.714443884482026,
+          "entanglement": 0.26463454961776733,
+          "purity": 0.7353654503822327,
+          "variance_explained": 0.00760702695697546
+        },
+        {
+          "separability": 0.32919038505260484,
+          "entanglement": 0.302374005317688,
+          "purity": 0.697625994682312,
+          "variance_explained": 0.003078470705077052
+        },
+        {
+          "separability": 0.09075175719395549,
+          "entanglement": 0.16462083160877228,
+          "purity": 0.8353791683912277,
+          "variance_explained": 0.0018594309221953154
+        }
+      ]
+    },
+    "7": {
+      "fdr": 5.137474559644433,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.4213341844921749,
+          "entanglement": 0.1301392763853073,
+          "purity": 0.8698607236146927,
+          "variance_explained": 0.9709523916244507
+        },
+        {
+          "separability": 1.6462510374272374,
+          "entanglement": 0.2738761901855469,
+          "purity": 0.7261238098144531,
+          "variance_explained": 0.011815601959824562
+        },
+        {
+          "separability": 0.3164934337554238,
+          "entanglement": 0.40973830223083496,
+          "purity": 0.590261697769165,
+          "variance_explained": 0.005051495973020792
+        },
+        {
+          "separability": 0.10728781762548309,
+          "entanglement": 0.26862969994544983,
+          "purity": 0.7313703000545502,
+          "variance_explained": 0.0020786095410585403
+        }
+      ]
+    },
+    "8": {
+      "fdr": 2.2020876677234953,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.5840630942384994,
+          "entanglement": 0.0828780084848404,
+          "purity": 0.9171219915151596,
+          "variance_explained": 0.984661877155304
+        },
+        {
+          "separability": 1.9745805513240633,
+          "entanglement": 0.34306296706199646,
+          "purity": 0.6569370329380035,
+          "variance_explained": 0.006438635755330324
+        },
+        {
+          "separability": 0.3106249012627879,
+          "entanglement": 0.43142807483673096,
+          "purity": 0.568571925163269,
+          "variance_explained": 0.0026482699904590845
+        },
+        {
+          "separability": 0.04588880843148666,
+          "entanglement": 0.31026026606559753,
+          "purity": 0.6897397339344025,
+          "variance_explained": 0.0009917288552969694
+        }
+      ]
+    },
+    "9": {
+      "fdr": 2.130014275235295,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.2590782531576588,
+          "entanglement": 0.06056850776076317,
+          "purity": 0.9394314922392368,
+          "variance_explained": 0.9902456402778625
+        },
+        {
+          "separability": 1.9962866492085498,
+          "entanglement": 0.34500399231910706,
+          "purity": 0.6549960076808929,
+          "variance_explained": 0.003604684956371784
+        },
+        {
+          "separability": 0.6263846363940712,
+          "entanglement": 0.5113462805747986,
+          "purity": 0.4886537194252014,
+          "variance_explained": 0.0018456472316756845
+        },
+        {
+          "separability": 0.024587337306015433,
+          "entanglement": 0.32828187942504883,
+          "purity": 0.6717181205749512,
+          "variance_explained": 0.0005999035784043372
+        }
+      ]
+    },
+    "10": {
+      "fdr": 2.637496727530189,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.8306662217246632,
+          "entanglement": 0.16869333386421204,
+          "purity": 0.831306666135788,
+          "variance_explained": 0.9928079843521118
+        },
+        {
+          "separability": 2.585439517996569,
+          "entanglement": 0.3896963894367218,
+          "purity": 0.6103036105632782,
+          "variance_explained": 0.002576228929683566
+        },
+        {
+          "separability": 0.6336786763732292,
+          "entanglement": 0.5660774111747742,
+          "purity": 0.43392258882522583,
+          "variance_explained": 0.0012581923510879278
+        },
+        {
+          "separability": 0.013589591519766069,
+          "entanglement": 0.38169267773628235,
+          "purity": 0.6183073222637177,
+          "variance_explained": 0.0004567680589389056
+        }
+      ]
+    },
+    "11": {
+      "fdr": 4.86743148537689,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.7564851114194595,
+          "entanglement": 0.17231641709804535,
+          "purity": 0.8276835829019547,
+          "variance_explained": 0.9878851175308228
+        },
+        {
+          "separability": 0.05544618554152578,
+          "entanglement": 0.23511818051338196,
+          "purity": 0.764881819486618,
+          "variance_explained": 0.0022443383932113647
+        },
+        {
+          "separability": 0.46894691561146834,
+          "entanglement": 0.2992420792579651,
+          "purity": 0.7007579207420349,
+          "variance_explained": 0.0010612967889755964
+        },
+        {
+          "separability": 2.8531703453274306,
+          "entanglement": 0.256266713142395,
+          "purity": 0.743733286857605,
+          "variance_explained": 0.0009597768657840788
+        }
+      ]
+    },
+    "12": {
+      "fdr": 9.161889365076945,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.28648869684023726,
+          "entanglement": 0.16944396495819092,
+          "purity": 0.8305560350418091,
+          "variance_explained": 0.9866236448287964
+        },
+        {
+          "separability": 0.0007166331224741717,
+          "entanglement": 0.22303150594234467,
+          "purity": 0.7769684940576553,
+          "variance_explained": 0.002758989343419671
+        },
+        {
+          "separability": 0.0001703976770240177,
+          "entanglement": 0.1081666499376297,
+          "purity": 0.8918333500623703,
+          "variance_explained": 0.0013359038857743144
+        },
+        {
+          "separability": 0.047775501999404855,
+          "entanglement": 0.2988758087158203,
+          "purity": 0.7011241912841797,
+          "variance_explained": 0.0010932392906397581
+        }
+      ]
+    },
+    "13": {
+      "fdr": 16.046054136439846,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.20612357954833546,
+          "entanglement": 0.1761702448129654,
+          "purity": 0.8238297551870346,
+          "variance_explained": 0.9673043489456177
+        },
+        {
+          "separability": 0.006212667957017612,
+          "entanglement": 0.10389161109924316,
+          "purity": 0.8961083889007568,
+          "variance_explained": 0.005137985106557608
+        },
+        {
+          "separability": 0.014010627984811192,
+          "entanglement": 0.10822015255689621,
+          "purity": 0.8917798474431038,
+          "variance_explained": 0.0030438776593655348
+        },
+        {
+          "separability": 0.004197917545346791,
+          "entanglement": 0.21860964596271515,
+          "purity": 0.7813903540372849,
+          "variance_explained": 0.0024871753994375467
+        }
+      ]
+    },
+    "14": {
+      "fdr": 18.22314079685575,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.1524225229883313,
+          "entanglement": 0.1810036599636078,
+          "purity": 0.8189963400363922,
+          "variance_explained": 0.9407650828361511
+        },
+        {
+          "separability": 0.028388253436254014,
+          "entanglement": 0.11050723493099213,
+          "purity": 0.8894927650690079,
+          "variance_explained": 0.00946070533245802
+        },
+        {
+          "separability": 0.10771751745162068,
+          "entanglement": 0.08390425145626068,
+          "purity": 0.9160957485437393,
+          "variance_explained": 0.005378639325499535
+        },
+        {
+          "separability": 0.010458479898587569,
+          "entanglement": 0.21144501864910126,
+          "purity": 0.7885549813508987,
+          "variance_explained": 0.004614986013621092
+        }
+      ]
+    },
+    "15": {
+      "fdr": 21.59271546313205,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.44034568383982475,
+          "entanglement": 0.1836109459400177,
+          "purity": 0.8163890540599823,
+          "variance_explained": 0.9367489218711853
+        },
+        {
+          "separability": 0.00397865901590006,
+          "entanglement": 0.23096822202205658,
+          "purity": 0.7690317779779434,
+          "variance_explained": 0.01416743267327547
+        },
+        {
+          "separability": 1.2901130313906986,
+          "entanglement": 0.09112566709518433,
+          "purity": 0.9088743329048157,
+          "variance_explained": 0.006713432259857655
+        },
+        {
+          "separability": 0.011633055469723317,
+          "entanglement": 0.2043471783399582,
+          "purity": 0.7956528216600418,
+          "variance_explained": 0.004237930290400982
+        }
+      ]
+    },
+    "16": {
+      "fdr": 32.540744310325714,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.989601342336031,
+          "entanglement": 0.13394716382026672,
+          "purity": 0.8660528361797333,
+          "variance_explained": 0.8905061483383179
+        },
+        {
+          "separability": 5.386985582190148,
+          "entanglement": 0.4089541733264923,
+          "purity": 0.5910458266735077,
+          "variance_explained": 0.031376346945762634
+        },
+        {
+          "separability": 0.6352684789809897,
+          "entanglement": 0.10508794337511063,
+          "purity": 0.8949120566248894,
+          "variance_explained": 0.019009247422218323
+        },
+        {
+          "separability": 0.005223113882245421,
+          "entanglement": 0.04236460104584694,
+          "purity": 0.9576353989541531,
+          "variance_explained": 0.007303311955183744
+        }
+      ]
+    },
+    "17": {
+      "fdr": 39.52410886163747,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 2.7744858619844126,
+          "entanglement": 0.11847738176584244,
+          "purity": 0.8815226182341576,
+          "variance_explained": 0.827109694480896
+        },
+        {
+          "separability": 1.5198016517843,
+          "entanglement": 0.09316875040531158,
+          "purity": 0.9068312495946884,
+          "variance_explained": 0.044791605323553085
+        },
+        {
+          "separability": 2.372147355213735,
+          "entanglement": 0.09005063772201538,
+          "purity": 0.9099493622779846,
+          "variance_explained": 0.03362666442990303
+        },
+        {
+          "separability": 0.03618615828480345,
+          "entanglement": 0.04725775867700577,
+          "purity": 0.9527422413229942,
+          "variance_explained": 0.013244337402284145
+        }
+      ]
+    },
+    "18": {
+      "fdr": 45.97336163793996,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 2.9525420053682527,
+          "entanglement": 0.16160987317562103,
+          "purity": 0.838390126824379,
+          "variance_explained": 0.8240092396736145
+        },
+        {
+          "separability": 0.16673166552574054,
+          "entanglement": 0.056323450058698654,
+          "purity": 0.9436765499413013,
+          "variance_explained": 0.05151839926838875
+        },
+        {
+          "separability": 4.653928216272414e-06,
+          "entanglement": 0.043018050491809845,
+          "purity": 0.9569819495081902,
+          "variance_explained": 0.01624818705022335
+        },
+        {
+          "separability": 0.1932999843936163,
+          "entanglement": 0.11533576995134354,
+          "purity": 0.8846642300486565,
+          "variance_explained": 0.01211125124245882
+        }
+      ]
+    },
+    "19": {
+      "fdr": 49.12057540250834,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.09302822117104687,
+          "entanglement": 0.15698698163032532,
+          "purity": 0.8430130183696747,
+          "variance_explained": 0.536421537399292
+        },
+        {
+          "separability": 0.3798475243228027,
+          "entanglement": 0.08027436584234238,
+          "purity": 0.9197256341576576,
+          "variance_explained": 0.1729462593793869
+        },
+        {
+          "separability": 0.004799810190782859,
+          "entanglement": 0.05276605859398842,
+          "purity": 0.9472339414060116,
+          "variance_explained": 0.037037648260593414
+        },
+        {
+          "separability": 0.09383205704184182,
+          "entanglement": 0.051321957260370255,
+          "purity": 0.9486780427396297,
+          "variance_explained": 0.02864224649965763
+        }
+      ]
+    },
+    "20": {
+      "fdr": 49.49021094601662,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.214227408403464,
+          "entanglement": 0.1730773150920868,
+          "purity": 0.8269226849079132,
+          "variance_explained": 0.6240158081054688
+        },
+        {
+          "separability": 1.0525700927915151,
+          "entanglement": 0.10169528424739838,
+          "purity": 0.8983047157526016,
+          "variance_explained": 0.116892971098423
+        },
+        {
+          "separability": 4.328801362713244,
+          "entanglement": 0.049175042659044266,
+          "purity": 0.9508249573409557,
+          "variance_explained": 0.05111011117696762
+        },
+        {
+          "separability": 0.006398918544205891,
+          "entanglement": 0.045989084988832474,
+          "purity": 0.9540109150111675,
+          "variance_explained": 0.02417561039328575
+        }
+      ]
+    },
+    "21": {
+      "fdr": 43.649345130076014,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.2144970389234502,
+          "entanglement": 0.1195179894566536,
+          "purity": 0.8804820105433464,
+          "variance_explained": 0.627789318561554
+        },
+        {
+          "separability": 1.2843849325013983,
+          "entanglement": 0.16412536799907684,
+          "purity": 0.8358746320009232,
+          "variance_explained": 0.11334618926048279
+        },
+        {
+          "separability": 2.9096534207027114,
+          "entanglement": 0.027186384424567223,
+          "purity": 0.9728136155754328,
+          "variance_explained": 0.030087504535913467
+        },
+        {
+          "separability": 0.00028691044512268223,
+          "entanglement": 0.07776281982660294,
+          "purity": 0.9222371801733971,
+          "variance_explained": 0.02704843319952488
+        }
+      ]
+    },
+    "22": {
+      "fdr": 31.448594586568806,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 5.285469558740235,
+          "entanglement": 0.19240343570709229,
+          "purity": 0.8075965642929077,
+          "variance_explained": 0.5331399440765381
+        },
+        {
+          "separability": 5.611735299372846,
+          "entanglement": 0.149788036942482,
+          "purity": 0.850211963057518,
+          "variance_explained": 0.27087974548339844
+        },
+        {
+          "separability": 1.0503726826067663,
+          "entanglement": 0.2969647943973541,
+          "purity": 0.7030352056026459,
+          "variance_explained": 0.09403879940509796
+        },
+        {
+          "separability": 0.03130624581209626,
+          "entanglement": 0.06654153019189835,
+          "purity": 0.9334584698081017,
+          "variance_explained": 0.019406920298933983
+        }
+      ]
+    },
+    "23": {
+      "fdr": 40.370390275035156,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.03895605774763344,
+          "entanglement": 0.16292500495910645,
+          "purity": 0.8370749950408936,
+          "variance_explained": 0.8653546571731567
+        },
+        {
+          "separability": 93.60096080702932,
+          "entanglement": 0.5769591927528381,
+          "purity": 0.42304080724716187,
+          "variance_explained": 0.06387777626514435
+        },
+        {
+          "separability": 0.00017346203858035317,
+          "entanglement": 0.024946941062808037,
+          "purity": 0.975053058937192,
+          "variance_explained": 0.02015841007232666
+        },
+        {
+          "separability": 0.0013244986985951703,
+          "entanglement": 0.0812663659453392,
+          "purity": 0.9187336340546608,
+          "variance_explained": 0.006596717983484268
+        }
+      ]
+    },
+    "24": {
+      "fdr": 43.75545348070042,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 2.5091133949775544,
+          "entanglement": 0.14990542829036713,
+          "purity": 0.8500945717096329,
+          "variance_explained": 0.884067177772522
+        },
+        {
+          "separability": 15.691313486252627,
+          "entanglement": 0.45268696546554565,
+          "purity": 0.5473130345344543,
+          "variance_explained": 0.03234840929508209
+        },
+        {
+          "separability": 0.008034731373675646,
+          "entanglement": 0.15257643163204193,
+          "purity": 0.8474235683679581,
+          "variance_explained": 0.01014690101146698
+        },
+        {
+          "separability": 0.15258280212182324,
+          "entanglement": 0.07586148381233215,
+          "purity": 0.9241385161876678,
+          "variance_explained": 0.008183791302144527
+        }
+      ]
+    },
+    "25": {
+      "fdr": 46.75041136587461,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 3.593581937465189,
+          "entanglement": 0.15219905972480774,
+          "purity": 0.8478009402751923,
+          "variance_explained": 0.8923481106758118
+        },
+        {
+          "separability": 19.906813960981367,
+          "entanglement": 0.4447278082370758,
+          "purity": 0.5552721917629242,
+          "variance_explained": 0.023126503452658653
+        },
+        {
+          "separability": 0.004431303919367561,
+          "entanglement": 0.12713325023651123,
+          "purity": 0.8728667497634888,
+          "variance_explained": 0.009701487608253956
+        },
+        {
+          "separability": 0.07592540474255152,
+          "entanglement": 0.05506160855293274,
+          "purity": 0.9449383914470673,
+          "variance_explained": 0.008509502746164799
+        }
+      ]
+    },
+    "26": {
+      "fdr": 45.877296794355594,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 2.228454444834235,
+          "entanglement": 0.1494889110326767,
+          "purity": 0.8505110889673233,
+          "variance_explained": 0.9042397737503052
+        },
+        {
+          "separability": 17.290880879346336,
+          "entanglement": 0.4252668619155884,
+          "purity": 0.5747331380844116,
+          "variance_explained": 0.01601349748671055
+        },
+        {
+          "separability": 0.005093712730560776,
+          "entanglement": 0.16535785794258118,
+          "purity": 0.8346421420574188,
+          "variance_explained": 0.009609696455299854
+        },
+        {
+          "separability": 0.0729018768989074,
+          "entanglement": 0.05485239624977112,
+          "purity": 0.9451476037502289,
+          "variance_explained": 0.008182776160538197
+        }
+      ]
+    },
+    "27": {
+      "fdr": 43.10136703212447,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.9151534754166042,
+          "entanglement": 0.17433826625347137,
+          "purity": 0.8256617337465286,
+          "variance_explained": 0.9098404049873352
+        },
+        {
+          "separability": 12.824309237362785,
+          "entanglement": 0.43866488337516785,
+          "purity": 0.5613351166248322,
+          "variance_explained": 0.012506245635449886
+        },
+        {
+          "separability": 0.08583791375661488,
+          "entanglement": 0.09051717817783356,
+          "purity": 0.9094828218221664,
+          "variance_explained": 0.008464984595775604
+        },
+        {
+          "separability": 0.00018026869184885864,
+          "entanglement": 0.15191607177257538,
+          "purity": 0.8480839282274246,
+          "variance_explained": 0.008137333206832409
+        }
+      ]
+    },
+    "28": {
+      "fdr": 48.05717622469194,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 3.4608316768717438,
+          "entanglement": 0.19898323714733124,
+          "purity": 0.8010167628526688,
+          "variance_explained": 0.9261489510536194
+        },
+        {
+          "separability": 14.322308137476893,
+          "entanglement": 0.5112860202789307,
+          "purity": 0.48871397972106934,
+          "variance_explained": 0.010020408779382706
+        },
+        {
+          "separability": 0.02818627995775172,
+          "entanglement": 0.2589653730392456,
+          "purity": 0.7410346269607544,
+          "variance_explained": 0.0076725054532289505
+        },
+        {
+          "separability": 0.0745760267170807,
+          "entanglement": 0.09646131843328476,
+          "purity": 0.9035386815667152,
+          "variance_explained": 0.007459406740963459
+        }
+      ]
+    },
+    "29": {
+      "fdr": 42.58125636753048,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 4.705042690336451,
+          "entanglement": 0.17935121059417725,
+          "purity": 0.8206487894058228,
+          "variance_explained": 0.9126905798912048
+        },
+        {
+          "separability": 16.353889554153795,
+          "entanglement": 0.556351900100708,
+          "purity": 0.443648099899292,
+          "variance_explained": 0.024913020431995392
+        },
+        {
+          "separability": 0.08081832957596907,
+          "entanglement": 0.14913806319236755,
+          "purity": 0.8508619368076324,
+          "variance_explained": 0.008220805786550045
+        },
+        {
+          "separability": 0.018647931468902257,
+          "entanglement": 0.2839241325855255,
+          "purity": 0.7160758674144745,
+          "variance_explained": 0.007396069820970297
+        }
+      ]
+    },
+    "30": {
+      "fdr": 43.90990494452861,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 3.6063752030359932,
+          "entanglement": 0.31938067078590393,
+          "purity": 0.6806193292140961,
+          "variance_explained": 0.9328065514564514
+        },
+        {
+          "separability": 10.434978100749355,
+          "entanglement": 0.43818843364715576,
+          "purity": 0.5618115663528442,
+          "variance_explained": 0.011859499849379063
+        },
+        {
+          "separability": 0.000334040502295836,
+          "entanglement": 0.3233599066734314,
+          "purity": 0.6766400933265686,
+          "variance_explained": 0.006901056971400976
+        },
+        {
+          "separability": 0.15136465711467179,
+          "entanglement": 0.12223579734563828,
+          "purity": 0.8777642026543617,
+          "variance_explained": 0.005859036929905415
+        }
+      ]
+    },
+    "31": {
+      "fdr": 40.40447154677835,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.7314889493840262,
+          "entanglement": 0.3871806859970093,
+          "purity": 0.6128193140029907,
+          "variance_explained": 0.9416518807411194
+        },
+        {
+          "separability": 9.26577768138963,
+          "entanglement": 0.41886767745018005,
+          "purity": 0.58113232254982,
+          "variance_explained": 0.009221954271197319
+        },
+        {
+          "separability": 2.5903416273706883e-05,
+          "entanglement": 0.2567826211452484,
+          "purity": 0.7432173788547516,
+          "variance_explained": 0.005868054460734129
+        },
+        {
+          "separability": 0.16335502476823419,
+          "entanglement": 0.15785719454288483,
+          "purity": 0.8421428054571152,
+          "variance_explained": 0.004849057644605637
+        }
+      ]
+    },
+    "32": {
+      "fdr": 36.151337477639295,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.2029903943117815,
+          "entanglement": 0.40230607986450195,
+          "purity": 0.597693920135498,
+          "variance_explained": 0.9454215168952942
+        },
+        {
+          "separability": 9.751551811777565,
+          "entanglement": 0.36627647280693054,
+          "purity": 0.6337235271930695,
+          "variance_explained": 0.007734027691185474
+        },
+        {
+          "separability": 0.0013531506699667707,
+          "entanglement": 0.24333082139492035,
+          "purity": 0.7566691786050797,
+          "variance_explained": 0.005284117069095373
+        },
+        {
+          "separability": 0.1425546921178644,
+          "entanglement": 0.13324448466300964,
+          "purity": 0.8667555153369904,
+          "variance_explained": 0.004178888164460659
+        }
+      ]
+    },
+    "33": {
+      "fdr": 35.86257805693759,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.753115235726538,
+          "entanglement": 0.45638298988342285,
+          "purity": 0.5436170101165771,
+          "variance_explained": 0.9508043527603149
+        },
+        {
+          "separability": 10.587929984516776,
+          "entanglement": 0.3599707782268524,
+          "purity": 0.6400292217731476,
+          "variance_explained": 0.006715365685522556
+        },
+        {
+          "separability": 0.00848534346003573,
+          "entanglement": 0.21886904537677765,
+          "purity": 0.7811309546232224,
+          "variance_explained": 0.004828238859772682
+        },
+        {
+          "separability": 0.12125619589086192,
+          "entanglement": 0.16736161708831787,
+          "purity": 0.8326383829116821,
+          "variance_explained": 0.0037452830001711845
+        }
+      ]
+    },
+    "34": {
+      "fdr": 36.26537958426702,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.2408255988307478,
+          "entanglement": 0.4506550431251526,
+          "purity": 0.5493449568748474,
+          "variance_explained": 0.9145233035087585
+        },
+        {
+          "separability": 67.80605646288663,
+          "entanglement": 0.1604781448841095,
+          "purity": 0.8395218551158905,
+          "variance_explained": 0.04219438135623932
+        },
+        {
+          "separability": 0.005336111627052592,
+          "entanglement": 0.10288755595684052,
+          "purity": 0.8971124440431595,
+          "variance_explained": 0.005402076989412308
+        },
+        {
+          "separability": 0.03252301810329047,
+          "entanglement": 0.1069776862859726,
+          "purity": 0.8930223137140274,
+          "variance_explained": 0.004003592301160097
+        }
+      ]
+    },
+    "35": {
+      "fdr": 34.91635023421572,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 0.5241364026311535,
+          "entanglement": 0.46387335658073425,
+          "purity": 0.5361266434192657,
+          "variance_explained": 0.9176247119903564
+        },
+        {
+          "separability": 68.83783051334338,
+          "entanglement": 0.15416179597377777,
+          "purity": 0.8458382040262222,
+          "variance_explained": 0.03914308175444603
+        },
+        {
+          "separability": 0.00521866374592886,
+          "entanglement": 0.11037726700305939,
+          "purity": 0.8896227329969406,
+          "variance_explained": 0.0050707547925412655
+        },
+        {
+          "separability": 0.040343204233754135,
+          "entanglement": 0.06643096357584,
+          "purity": 0.93356903642416,
+          "variance_explained": 0.003988770768046379
+        }
+      ]
+    },
+    "36": {
+      "fdr": 33.341259574199924,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 1.6840566090894074,
+          "entanglement": 0.4587877094745636,
+          "purity": 0.5412122905254364,
+          "variance_explained": 0.921100378036499
+        },
+        {
+          "separability": 62.69683787868902,
+          "entanglement": 0.1465030014514923,
+          "purity": 0.8534969985485077,
+          "variance_explained": 0.03606635704636574
+        },
+        {
+          "separability": 0.01676671761095865,
+          "entanglement": 0.0825493335723877,
+          "purity": 0.9174506664276123,
+          "variance_explained": 0.00477531598880887
+        },
+        {
+          "separability": 0.02385188367085934,
+          "entanglement": 0.048194095492362976,
+          "purity": 0.951805904507637,
+          "variance_explained": 0.004208262078464031
+        }
+      ]
+    },
+    "37": {
+      "fdr": 30.243212238211385,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 2.5604132780132063,
+          "entanglement": 0.4725792109966278,
+          "purity": 0.5274207890033722,
+          "variance_explained": 0.9165744781494141
+        },
+        {
+          "separability": 56.69241819860412,
+          "entanglement": 0.11226915568113327,
+          "purity": 0.8877308443188667,
+          "variance_explained": 0.03512251377105713
+        },
+        {
+          "separability": 0.035184977176181784,
+          "entanglement": 0.062130700796842575,
+          "purity": 0.9378692992031574,
+          "variance_explained": 0.005395181942731142
+        },
+        {
+          "separability": 0.010583614920617268,
+          "entanglement": 0.07123222947120667,
+          "purity": 0.9287677705287933,
+          "variance_explained": 0.004559707827866077
+        }
+      ]
+    },
+    "38": {
+      "fdr": 27.195207932889065,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 3.271244332534655,
+          "entanglement": 0.4476933479309082,
+          "purity": 0.5523066520690918,
+          "variance_explained": 0.9067339897155762
+        },
+        {
+          "separability": 48.2334726402087,
+          "entanglement": 0.08605869114398956,
+          "purity": 0.9139413088560104,
+          "variance_explained": 0.036153826862573624
+        },
+        {
+          "separability": 0.05849399050564493,
+          "entanglement": 0.031574152410030365,
+          "purity": 0.9684258475899696,
+          "variance_explained": 0.006206959951668978
+        },
+        {
+          "separability": 0.003585665771221809,
+          "entanglement": 0.07844336330890656,
+          "purity": 0.9215566366910934,
+          "variance_explained": 0.005017450079321861
+        }
+      ]
+    },
+    "39": {
+      "fdr": 26.788709386013977,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 9.811192644443699,
+          "entanglement": 0.394507497549057,
+          "purity": 0.605492502450943,
+          "variance_explained": 0.8988457918167114
+        },
+        {
+          "separability": 40.73609203213281,
+          "entanglement": 0.057571232318878174,
+          "purity": 0.9424287676811218,
+          "variance_explained": 0.038089439272880554
+        },
+        {
+          "separability": 0.08681035318643493,
+          "entanglement": 0.022495906800031662,
+          "purity": 0.9775040931999683,
+          "variance_explained": 0.006922650616616011
+        },
+        {
+          "separability": 0.001967973290606214,
+          "entanglement": 0.08311433345079422,
+          "purity": 0.9168856665492058,
+          "variance_explained": 0.005470744799822569
+        }
+      ]
+    },
+    "40": {
+      "fdr": 24.289999324648093,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 13.492767382410944,
+          "entanglement": 0.3342435657978058,
+          "purity": 0.6657564342021942,
+          "variance_explained": 0.8951719403266907
+        },
+        {
+          "separability": 44.40590501272386,
+          "entanglement": 0.031021129339933395,
+          "purity": 0.9689788706600666,
+          "variance_explained": 0.03689732030034065
+        },
+        {
+          "separability": 0.08229502265353827,
+          "entanglement": 0.01220409944653511,
+          "purity": 0.9877959005534649,
+          "variance_explained": 0.0074258544482290745
+        },
+        {
+          "separability": 0.0026341359882462593,
+          "entanglement": 0.13231131434440613,
+          "purity": 0.8676886856555939,
+          "variance_explained": 0.0057624089531600475
+        }
+      ]
+    },
+    "41": {
+      "fdr": 33.683297302030546,
+      "n_directions": 4,
+      "directions": [
+        {
+          "separability": 11.564627961507437,
+          "entanglement": 0.7649946808815002,
+          "purity": 0.23500531911849976,
+          "variance_explained": 0.9217625856399536
+        },
+        {
+          "separability": 45.79675114519307,
+          "entanglement": 0.02204744704067707,
+          "purity": 0.9779525529593229,
+          "variance_explained": 0.023364106193184853
+        },
+        {
+          "separability": 0.0017737181997094311,
+          "entanglement": 0.09684962034225464,
+          "purity": 0.9031503796577454,
+          "variance_explained": 0.007530250586569309
+        },
+        {
+          "separability": 1.3766192450089756e-05,
+          "entanglement": 0.09577341377735138,
+          "purity": 0.9042265862226486,
+          "variance_explained": 0.00445565115660429
+        }
+      ]
+    }
+  },
+  "ablation_history": [
+    {
+      "iteration": 0,
+      "n_directions_ablated": 14,
+      "total_weight_norm_removed": 24.572265625,
+      "residual_refusal_score": 13.5258891945438,
+      "capability_degradation_estimate": 0.0
+    },
+    {
+      "iteration": 1,
+      "n_directions_ablated": 14,
+      "total_weight_norm_removed": 18.68359375,
+      "residual_refusal_score": 7.900366564913215,
+      "capability_degradation_estimate": 0.0
+    },
+    {
+      "iteration": 2,
+      "n_directions_ablated": 14,
+      "total_weight_norm_removed": 15.9609375,
+      "residual_refusal_score": 6.284762083609867,
+      "capability_degradation_estimate": 0.0
+    },
+    {
+      "iteration": 3,
+      "n_directions_ablated": 14,
+      "total_weight_norm_removed": 16.623046875,
+      "residual_refusal_score": 7.381371946552603,
+      "capability_degradation_estimate": 0.0
+    }
+  ]
+}
