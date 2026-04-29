@@ -1,40 +1,20 @@
-"""
-SABER — Spectral Analysis-Based Entanglement Resolution
-=======================================================
+﻿"""SABER: Spectral Analysis-Based Entanglement Resolution.
 
-A novel method for LLM refusal ablation that explicitly quantifies and
-preserves the entanglement between refusal and capability representations.
+SABER is a controlled refusal-shaping workflow for open-weight language
+models. It extracts refusal-related activation directions, estimates how much
+those directions overlap with capability-oriented representations, applies
+candidate ablations, and compares candidates on refusal behavior and drift.
 
-Key innovations over prior work:
-  1. CCA-based entanglement quantification — measures actual overlap between
-     refusal and capability subspaces (no prior method does this)
-  2. Entanglement-weighted ablation — partial ablation proportional to
-     (1 - entanglement), preserving capability-entangled components
-  3. Hydra-aware iterative refinement — re-probes after each ablation pass
-     to catch dormant features that awaken (inspired by Prakash et al. 2025)
-  4. Fisher discriminant layer selection — FDR criterion for principled
-     layer selection (accounts for within-class variance, unlike cosine sim)
-  5. Multi-granularity spectral decomposition — extracts refusal directions
-     at full-activation, per-attention-head, and per-expert (MoE) levels
+Core ideas:
+  1. Refusal-direction extraction from harmful and harmless activations.
+  2. Capability-entanglement estimates for candidate directions.
+  3. Differential ablation strength for cleaner versus entangled directions.
+  4. Iterative re-probing after edits.
+  5. Frontier selection using refusal behavior and KLD drift.
 
-Theoretical foundation:
-  - Refusal direction r is decomposed into pure-refusal and
-    capability-entangled components via CCA:
-      r = r_pure + r_entangled
-    where r_pure ⊥ capability_subspace and r_entangled ∈ capability_subspace
-  - Ablation strength is modulated by entanglement coefficient ρ:
-      W' = W(I - (1 - ρ) * r_pure * r_pure^T) - α * r_entangled * r_entangled^T
-    Pure refusal components are fully ablated; entangled components are
-    partially ablated with strength α << 1 or skipped entirely.
-
-References:
-  - Arditi et al. (NeurIPS 2024) — "Refusal in LLMs Is Mediated by a Single Direction"
-  - Gülmez (2025) — "Gabliteration" (arXiv:2512.18901)
-  - Nanfack et al. (ICLR 2026) — "Efficient Refusal Ablation via Optimal Transport" (arXiv:2603.04355)
-  - Siu et al. (ACL 2025) — "COSMIC" (arXiv:2506.00085)
-  - Yeo et al. (EMNLP 2025) — "Understanding Refusal with SAEs" (arXiv:2505.23556)
-  - Prakash et al. (2025) — "Dissecting LLM Refusal" (arXiv:2509.09708)
-  - Joad et al. (2026) — "More to Refusal than a Single Direction" (arXiv:2602.02132)
+The implementation is research software. Treat metrics as model-family and
+prompt-set dependent, and pair refusal-rate numbers with category review and
+qualitative output inspection before making release claims.
 """
 
 import torch
@@ -283,7 +263,7 @@ class DirectionExtractor:
 
 
 # ---------------------------------------------------------------------------
-# Entanglement Analysis (NOVEL — core SABER innovation)
+# Entanglement Analysis (NOVEL - core SABER innovation)
 # ---------------------------------------------------------------------------
 
 class EntanglementAnalyzer:
@@ -292,7 +272,7 @@ class EntanglementAnalyzer:
     This is SABER's primary novel contribution: no prior refusal ablation
     method explicitly measures how much refusal directions overlap with
     capability directions. Gabliteration uses ridge regularization as a proxy,
-    but ridge does not measure actual overlap — it just stabilizes the
+    but ridge does not measure actual overlap - it just stabilizes the
     projection. SABER uses CCA to directly measure and account for overlap.
     """
 
@@ -305,16 +285,16 @@ class EntanglementAnalyzer:
     ) -> List[float]:
         """Compute entanglement coefficient for each refusal direction.
 
-        The entanglement coefficient ρ ∈ [0, 1] measures how much of
+        The entanglement coefficient rho  in  [0, 1] measures how much of
         a refusal direction lies within the capability subspace:
-          ρ_i = max_k |corr(r_i, c_k)|
+          rho_i = max_k |corr(r_i, c_k)|
         where c_k are the top CCA directions between the refusal and
         capability subspaces.
 
         Interpretation:
-          ρ ≈ 0  → direction is "pure refusal" → safe to fully ablate
-          ρ ≈ 1  → direction is heavily entangled with capabilities
-                    → partial ablation or skip to preserve capabilities
+          rho ~= 0  -> direction is "pure refusal" -> safe to fully ablate
+          rho ~= 1  -> direction is heavily entangled with capabilities
+                    -> partial ablation or skip to preserve capabilities
         """
         if len(refusal_directions) == 0 or capability_acts.shape[0] < 2:
             return [0.0] * len(refusal_directions)
@@ -424,7 +404,7 @@ class LayerSelector:
     ) -> float:
         """FDR = between_class_variance / within_class_variance.
 
-        Higher FDR → more separable → better target for ablation.
+        Higher FDR -> more separable -> better target for ablation.
         """
         mu_h = harmful_acts.mean(dim=0)
         mu_s = harmless_acts.mean(dim=0)
@@ -453,7 +433,7 @@ class LayerSelector:
         """Select layers for intervention based on FDR profile.
 
         Args:
-            layer_fdr: mapping of layer_idx → FDR value
+            layer_fdr: mapping of layer_idx -> FDR value
             strategy: selection strategy
             top_k: for "top_k" strategy
             threshold: for "threshold" strategy
@@ -680,19 +660,19 @@ class MultiGranularityExtractor:
 
 
 # ---------------------------------------------------------------------------
-# Entanglement-Weighted Ablation (NOVEL — core SABER operation)
+# Entanglement-Weighted Ablation (NOVEL - core SABER operation)
 # ---------------------------------------------------------------------------
 
 class EntanglementWeightedAblator:
     """Perform entanglement-weighted weight surgery.
 
     The key innovation: instead of uniformly ablating all refusal directions,
-    SABER modulates ablation strength by the entanglement coefficient ρ:
+    SABER modulates ablation strength by the entanglement coefficient rho:
 
-      For a direction r with purity p = 1 - ρ:
+      For a direction r with purity p = 1 - rho:
         - Pure component r_pure: fully ablated with strength p
         - Entangled component r_entangled: partially ablated with strength
-          α_entangled = α_base * (1 - p)
+          alpha_entangled = alpha_base * (1 - p)
 
     This ensures that directions which are heavily entangled with
     capabilities receive minimal ablation, preserving model performance
@@ -731,17 +711,17 @@ class EntanglementWeightedAblator:
     ) -> float:
         """Apply entanglement-weighted ablation to a single layer.
 
-        For each direction with known entanglement ρ:
-          purity = 1 - ρ
+        For each direction with known entanglement rho:
+          purity = 1 - rho
           If capability_subspace is provided, decompose direction:
             r = r_pure + r_entangled
           Ablation:
             For weight W:
-              W' = W - α_pure * W @ (r_pure ⊗ r_pure)
-                   - α_entangled * W @ (r_entangled ⊗ r_entangled)
+              W' = W - alpha_pure * W @ (r_pure  outer  r_pure)
+                   - alpha_entangled * W @ (r_entangled  outer  r_entangled)
             Equivalently (single-direction, no decomposition):
-              W' = W(I - α_total * r ⊗ r)
-              where α_total = purity * α_base + ρ * α_entangled
+              W' = W(I - alpha_total * r  outer  r)
+              where alpha_total = purity * alpha_base + rho * alpha_entangled
 
         Returns: total Frobenius norm of weight changes.
         """
@@ -749,7 +729,7 @@ class EntanglementWeightedAblator:
 
         # Aggregate directions into a single ablation matrix
         # R = [r1, r2, ..., rk]  (d, k)
-        # A = R @ diag(α_total) @ R^T  (d, d) — but we use low-rank form
+        # A = R @ diag(alpha_total) @ R^T  (d, d) - but we use low-rank form
         alphas = []
         R_dirs = []
 
@@ -807,9 +787,9 @@ class EntanglementWeightedAblator:
             # Choose ablation mode based on dimension alignment.
             # Direction vectors live in the residual stream space (d_model).
             # - If in_features == d_model: input-space ablation (remove r from input)
-            #   W' = W(I - R @ diag(a) @ R^T)   — Arditi-style for standard models
+            #   W' = W(I - R @ diag(a) @ R^T)   - Arditi-style for standard models
             # - If out_features == d_model: output-space ablation (remove r from output)
-            #   W' = (I - R @ diag(a) @ R^T) @ W — needed when in != d (e.g. Gemma 4)
+            #   W' = (I - R @ diag(a) @ R^T) @ W - needed when in != d (e.g. Gemma 4)
             # - If neither: skip this module (direction dimension mismatch)
 
             if W.shape[1] == d:
@@ -846,7 +826,7 @@ class EntanglementWeightedAblator:
                         r_i = R[:, i]
                         b_proj = (b @ r_i) * r_i
                         b.sub_(alphas[i] * b_proj)
-            # else: dimension mismatch — skip this module
+            # else: dimension mismatch - skip this module
 
         return total_norm_removed
 
@@ -876,7 +856,7 @@ class HydraAwareRefiner:
 
     Convergence is detected when:
       1. Residual refusal score drops below threshold, OR
-      2. The refusal direction has rotated < ε from the previous iteration
+      2. The refusal direction has rotated < epsilon from the previous iteration
          (indicating we've exhausted the refusal subspace), OR
       3. Maximum iterations reached
     """
@@ -895,7 +875,7 @@ class HydraAwareRefiner:
             convergence_threshold: stop when residual refusal < this
             direction_stability_threshold: stop when cos sim between
                 consecutive refusal directions > this
-            decay_factor: multiply α by this each iteration
+            decay_factor: multiply alpha by this each iteration
             patience: stop if no improvement for this many iterations
         """
         self.max_iterations = max_iterations
@@ -969,7 +949,7 @@ class SABERConfig:
     alpha_base: float = 1.0
     alpha_entangled: float = 0.1
     ablate_bias: bool = True
-    entanglement_threshold: float = 0.7  # skip directions with ρ > this
+    entanglement_threshold: float = 0.7  # skip directions with rho > this
 
     # Iterative refinement
     max_iterations: int = 5
@@ -997,11 +977,11 @@ class SABER:
     """Spectral Analysis-Based Entanglement Resolution.
 
     The complete pipeline:
-      1. PROBE    — Extract activations from harmful/harmless/capability prompts
-      2. ANALYZE  — Compute layer FDR profiles, extract refusal directions,
+      1. PROBE    - Extract activations from harmful/harmless/capability prompts
+      2. ANALYZE  - Compute layer FDR profiles, extract refusal directions,
                      quantify entanglement with capability subspace
-      3. EXCISE   — Apply entanglement-weighted ablation to selected layers
-      4. VERIFY   — Re-probe to measure residual refusal (hydra detection)
+      3. EXCISE   - Apply entanglement-weighted ablation to selected layers
+      4. VERIFY   - Re-probe to measure residual refusal (hydra detection)
       5. REFINE -- Iterate EXCISE->VERIFY until convergence
     """
 
@@ -1054,7 +1034,7 @@ class SABER:
         Returns:
             SABERResult with all analysis and ablation details.
         """
-        # ── Step 1: PROBE — Extract activations ──
+        # -- Step 1: PROBE - Extract activations --
         logger.info("=== SABER Stage 1: PROBE ===")
         if layers is None:
             layers = list(range(self._get_num_layers()))
@@ -1080,7 +1060,7 @@ class SABER:
                 self.config.batch_size, "full",
             )
 
-        # ── Step 2: ANALYZE — Layer profiles + direction extraction ──
+        # -- Step 2: ANALYZE - Layer profiles + direction extraction --
         logger.info("=== SABER Stage 2: ANALYZE ===")
         layer_profiles = {}
         layer_fdr = {}
@@ -1242,7 +1222,7 @@ class SABER:
                         all_refusal_directions.append(rd)
 
             if not iteration_directions:
-                logger.info("  No viable directions to ablate — stopping.")
+                logger.info("  No viable directions to ablate - stopping.")
                 break
 
             # Apply ablation
@@ -1324,7 +1304,7 @@ class SABER:
             config=self.config.to_dict(),
         )
 
-    # ── Internal helpers ──
+    # -- Internal helpers --
 
     def _extract_directions(
         self,
@@ -1389,7 +1369,7 @@ class SABER:
             centered = acts - acts.mean(dim=0, keepdim=True)
             try:
                 _, _, Vh = torch.linalg.svd(centered, full_matrices=False)
-                V = Vh.T  # (d, min(n,d)) — right singular vectors as columns
+                V = Vh.T  # (d, min(n,d)) - right singular vectors as columns
                 n = min(self.config.n_capability_directions, V.shape[1])
                 result[l] = V[:, :n]  # (d, n) orthonormal columns
             except torch._C._LinAlgError:
@@ -1443,7 +1423,7 @@ class SABER:
 
         # Normalize: assume baseline norm is the first measurement
         # In practice, you'd compare to a pre-ablation baseline
-        return 0.0  # placeholder — requires pre-ablation baseline
+        return 0.0  # placeholder - requires pre-ablation baseline
 
     def _get_layer(self, layer_idx: int):
         """Get transformer layer by index."""

@@ -5,6 +5,8 @@ __pycache__/
 .venv/
 venv/
 .env
+.ruff_cache/
+.pytest_cache/
 
 # Logs and local process output
 *.log
@@ -29,6 +31,9 @@ runs/*/*/saber_model/
 *.db
 *.sqlite
 .DS_Store
+build/
+dist/
+*.egg-info/
 
 # Backup copies
 *.bak.*
@@ -37,6 +42,7 @@ runs/
 results/
 queue/
 reports/generated/
+graphify-out/
 *.jsonl
 *.tmp
 *token*

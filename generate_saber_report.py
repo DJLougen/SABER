@@ -4,7 +4,7 @@ import json, html
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 RUNS = ROOT / "runs"
-OUT = ROOT / "saber_browser_report.html"
+OUT = ROOT / "docs" / "results" / "saber_browser_report.html"
 
 def read_json(path: Path):
     try:
@@ -90,6 +90,7 @@ svg {{ width:100%; max-width:820px; height:auto; background:#111722; border:1px 
 <section><h2>Run Table</h2><table><thead><tr><th>run</th><th>score</th><th>refusal</th><th>KLD</th><th>residual</th><th>g</th><th>alpha</th><th>iters</th><th>n layers</th><th>layers</th></tr></thead><tbody>{''.join(tr(r) for r in rows_sorted)}</tbody></table></section>
 <section><h2>Prior-Art Boundary</h2><p>I did not invent refusal ablation. SABER is my take on abliteration, inspired by prior work including Arditi et al., Labonne/FailSpy-style abliteration, Jim Lai's projected and norm-preserving variants, Pliny/OBLITERATUS, Heretic, Jiunsong/SuperGemma, and spectral-cleaning/SRA-style work. The claim is the combination of separability ranking, entanglement-aware scaling, and refusal/KLD frontier mapping.</p></section>
 </main></body></html>"""
+OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(html_doc)
 print(f"wrote {OUT}")
 print(f"runs={len(rows)} complete={len(complete)} pareto={len(frontier)}")

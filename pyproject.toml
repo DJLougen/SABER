@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "saber-refusal-shaping"
+version = "0.1.0"
+description = "Controlled refusal shaping toolkit for open-weight language models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "DJLougen" }
+]
+keywords = [
+  "llm",
+  "refusal",
+  "abliteration",
+  "model-editing",
+  "alignment",
+  "mechanistic-interpretability"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+  "torch>=2.1.0",
+  "transformers>=4.40.0",
+  "accelerate>=0.25.0",
+  "safetensors",
+  "numpy",
+  "textual",
+  "rich",
+  "httpx",
+  "fastapi",
+  "uvicorn",
+  "pydantic"
+]
+
+[project.urls]
+Homepage = "https://github.com/DJLougen/SABER"
+Repository = "https://github.com/DJLougen/SABER"
+
+[project.scripts]
+saber-run = "run_saber:main"
+saber-autotune = "saber_autotune:main"
+saber-sweep = "sweep:main"
+saber-batch = "batch_runs:main"
+
+[tool.setuptools]
+py-modules = [
+  "batch_runs",
+  "config",
+  "run_saber",
+  "saber",
+  "saber_autotune",
+  "saber_eval_kld",
+  "saber_eval_refusal",
+  "saber_lab_server",
+  "saber_lab_tui",
+  "sweep"
+]

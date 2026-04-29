@@ -20,7 +20,7 @@ Install a CUDA-specific PyTorch wheel first if your machine needs one.
 ## 3. Smoke Test
 
 ```bash
-python -m py_compile saber.py run_saber.py saber_eval_kld.py saber_eval_refusal.py saber_lab_server.py saber_lab_tui.py
+python -m py_compile saber.py run_saber.py saber_autotune.py saber_eval_kld.py saber_eval_refusal.py saber_lab_server.py saber_lab_tui.py
 python generate_saber_report.py
 ```
 
@@ -47,3 +47,5 @@ A candidate is not ready just because the quick 30-prompt refusal probe says 0%,
 - recorded run config and output path
 - qualitative sample review
 - clear attribution that the work is a custom controlled-refusal-shaping workflow inspired by prior abliteration/refusal-ablation methods
+
+See [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) for the public-release checklist.
